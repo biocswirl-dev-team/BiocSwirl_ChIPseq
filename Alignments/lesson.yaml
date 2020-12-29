@@ -1,0 +1,56 @@
+- Class: meta
+  Course: ChIP
+  Lesson: Alignments
+  Author: Matthew Moss
+  Type: Standard
+  Organization: Donald And Barbara Zucker School of Medicine at Hofstra/Northwell
+  Version: 2.4.5
+
+
+
+#Explain alignment
+
+- Class: text
+  Output: The first step of a ChIP-seq analysis is to align these FASTQ files to a reference.
+
+- Class: text
+  Output: There are many open source and commercial alignment tools with varying sensitivities and speeds. Which aligner you choose to use depends on available computing power and the acceptable trade-off between accuracy and speed. Commonly used aligners include BWA, Bowtie2, HISAT2, Bfast, and Stampy. In this lesson, we will be using Bowtie2
+
+- Class: text
+  Output: Using bioconductor, please install Rbowtie2 (if you are not familiar with installation using bioconductor, take a look at that lesson first!). 
+
+- Class: cmd_question
+  Output: Use the install() function from BiocManager to install the Rbowtie2 package
+  CorrectAnswer: BiocManager::install("Rbowtie2")
+  AnswerTests: omnitest(correctExpr = 'BiocManager::install("Rbowtie2")')
+  Hint: https://bioconductor.org/packages/release/bioc/html/Rbowtie2.html
+
+- Class: cmd_question
+  Output: After installation, make sure to load your package using the "library" function. 
+  CorrectAnswer: library("Rbowtie2")
+  AnswerTests: omnitest(correctExpr = 'library("Rbowtie2")')
+  Hint: The format should be "library(__"packageName"__)
+
+
+- Class: text
+  Output: In addition to needing the software, it is also necessary to have a reference genome to align your reads to. Each species will have its own reference, and most softwares require the reference to be formatted in a software specific way. While it is possible to generate your own bowtie2 reference, that is beyond the scope of this lesson.  Bowtie2 distributes a copy of the mouse and human reference genomes on their website. Please download the most recent mouse reference (mm10) from the bowtie2 website, and save it to an easily accessible folder, before proceeding to the next step!
+
+
+#Status Check
+
+- Class: text
+  Output: These are all of the pieces required to align fastq reads to a reference genome using bowtie. 
+
+
+#Run Alignment
+
+- Class: text
+  Output: Once you have collected these pieces, you can perform your alignment! 
+
+- Class: text
+  Output: You must align both your treatment and your input to the reference genome, one at a time.
+
+- Class: text
+  Output:  The format to the bowtie2 command for paired end reads is as follows, bowtie2(bt2Index, samOutput, seq1, seq2). In this lesson we will not make you run the alignment, as it can take a long time. The next lesson will begin with the reads already aligned. If you would like to though, you can align them on your own before starting the next one!
+
+
