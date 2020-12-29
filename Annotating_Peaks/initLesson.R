@@ -11,5 +11,4 @@
 }
 
 
-load(file.path(.get_course_path(), "ChIP_seq", "Annotating_Peaks","peaks.RData"))
-
+peaks <- file.path(.get_course_path(), "BiocSwirl_ChIPseq", "Annotating_Peaks","P133-_k27ac_peaks.bed")

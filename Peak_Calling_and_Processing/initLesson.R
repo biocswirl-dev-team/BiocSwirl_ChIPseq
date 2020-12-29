@@ -11,7 +11,7 @@
 }
 
 
-load(file.path(.get_course_path(), "ChIP_seq", "Peak_Calling_and_Processing","alignedReads.RData"))
+load(file.path(.get_course_path(), "BiocSwirl_ChIPseq", "Peak_Calling_and_Processing","alignedReads.RData"))
 
 if (!requireNamespace("Rsamtools", quietly = TRUE))
   BiocManager::install("Rsamtools")

@@ -3,7 +3,7 @@
   Lesson: Peak Calling and Processing
   Author: Matthew Moss
   Type: Standard
-  Organization: Donald And Barbara Zucker School of Medicine at Hofstra/Northwell
+  Organization: none
   Version: 2.4.5
 
 
@@ -16,13 +16,13 @@
 - Class: cmd_question
   Output: Install normr
   CorrectAnswer: BiocManager::install('normr')
-  AnswerTests: omnitest(BiocManager::install('normr'))
+  AnswerTests: omnitest(correctExpr = 'BiocManager::install('normr')')
   Hint: Use BiocManager::install() to get the job done!
 
 - Class: cmd_question
   Output: After installation, make sure to load your package using the "library" function. 
   CorrectAnswer: library("normr")
-  AnswerTests: omnitest(library("normr"))
+  AnswerTests: omnitest(correctExpr = 'library("normr")')
   Hint: The format should be "library(__"packageName"__)
 
 - Class: text
@@ -32,7 +32,7 @@
 - Class: cmd_question
   Output: Try running it on your data! Our treatment variable is currently saved as "treat" and our input is saved as "inpt". Save it to a variable called "enrich" for later use
   CorrectAnswer: enrich <- enrichR(treatment = treat, control = inpt, genome = "mm10", verbose = FALSE)
-  AnswerTests: omnitest(enrich <- enrichR(treatment = treat, control = inpt, genome = "mm10", verbose = FALSE))
+  AnswerTests: omnitest(correctExpr = 'enrich <- enrichR(treatment = treat, control = inpt, genome = "mm10", verbose = FALSE)')
   Hint: Use ?normr::enrichR to see the help documentation!
 
 
@@ -43,31 +43,31 @@
 - Class: cmd_question
   Output: Extract the binding sites using the "getRanges" function on your enrich variable. Save it to a variable called "peaks"
   CorrectAnswer: peaks <- getRanges(enrich)
-  AnswerTests: omnitest(peaks <- getRanges(enrich))
+  AnswerTests: omnitest(correctExpr = 'peaks <- getRanges(enrich)')
   Hint: Use ?normr::getRanges to see the help documentation!
 
 - Class: cmd_question
   Output: Add qvalue information using the "getQvalues" function and saving it to a column called "qvalue"
   CorrectAnswer: peaks$qvalue <- getQvalues(enrich)
-  AnswerTests: omnitest(peaks$qvalue <- getQvalues(enrich))
+  AnswerTests: omnitest(correctExpr = 'peaks$qvalue <- getQvalues(enrich)')
   Hint: Use ?normr::getQvalues to see the help documentation!
 
 - Class: cmd_question
   Output: Add enrichment score information using the "getEnrichment" function and saving it to a column called "enrichment"
   CorrectAnswer: peaks$enrichment <- getEnrichment(enrich)
-  AnswerTests: omnitest(peaks$enrichment <- getEnrichment(enrich))
+  AnswerTests: omnitest(correctExpr = 'peaks$enrichment <- getEnrichment(enrich)')
   Hint: Use ?normr::getQvalues to see the help documentation!
 
 - Class: cmd_question
   Output: Filter peaks by enrichment score by subsetting out those that do not have an enriched component value
   CorrectAnswer: peaks <- subset(peaks, !is.na(component))
-  AnswerTests: omnitest(peaks <- subset(peaks, !is.na(component)))
+  AnswerTests: omnitest(correctExpr = 'peaks <- subset(peaks, !is.na(component))')
   Hint: Take a look at the ranges to see what values can be in the "enrichment" column, and thus what we're trying to filter out
 
 - Class: cmd_question
   Output: Filter peaks by qvalue by subsetting below a threshold (in this case we'll be stringent and say the qvalue must be below 0.01)
   CorrectAnswer: peaks <- subset(peaks, qvalue < 0.01)
-  AnswerTests: omnitest(peaks <- subset(peaks, qvalue < 0.01))
+  AnswerTests: omnitest(correctExpr = 'peaks <- subset(peaks, qvalue < 0.01)')
   Hint: Take a look at ?subset to understand how to subset data frames by a value!
 
 - Class: text
